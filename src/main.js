@@ -1,10 +1,10 @@
 console.log('Starting up...')
 const electron = require('electron')
+const countdown = require('./countdown')
 
 const app = electron.app
 const gui = electron.BrowserWindow
-
-const countdown = require('./countdown')
+const ipc = electron.ipcMain
 
 let mainWindow
 app.on('ready', _ => {
@@ -20,4 +20,8 @@ app.on('ready', _ => {
     console.log('Window closed!')
     mainWindow = null
   })
+})
+
+ipc.on('countdown-start', _ => {
+  console.log("Caught it!")
 })
