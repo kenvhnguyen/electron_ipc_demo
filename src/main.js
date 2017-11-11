@@ -15,7 +15,6 @@ app.on('ready', _ => {
     width: 400
   })
   mainWindow.loadURL(`file://${__dirname}/countdown.html`)
-  countdown()
   mainWindow.on('close', _ => {
     console.log('Window closed!')
     mainWindow = null
@@ -23,5 +22,6 @@ app.on('ready', _ => {
 })
 
 ipc.on('countdown-start', _ => {
-  console.log("Caught it!")
+  console.log("Caught the start click from the gui. Start counting down...")
+  countdown()
 })
